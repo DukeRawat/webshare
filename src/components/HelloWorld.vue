@@ -32,26 +32,50 @@
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
-    <h3>Installed CLI Plugins</h3>
+    <h2>Features and Limitations</h2>
+    <h3>Features</h3>
     <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
+      <li> > Using Web Share, your web application can use the system-provided sharing capabilities just like a platform-specific app.</li>
+      <li> > Users/Developers get a more comprehensive range of sharing options.</li>
+      <li> > It is possible to customize the share targets and choices in their devices. Reduce inconveniences and abuses</li>
+      <li> > Web Share APIs help to share text, URLs, and files.</li>
     </ul>
-    <h3>Essential Links</h3>
+    <h3>Limitations</h3>
     <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
+      <li> > It can only be used on a site that is accessed via HTTPS.</li>
+      <li> > It must be invoked in response to a user action such as a click. Invoking it through the onload & setTimeout is not recommended.</li>
+      <li> > As of January 2021, it is available on Safari, Android in Chromium forks, Chrome OS, and Chrome on Windows. Chrome on MacOS is still in development.</li>
     </ul>
-    <h3>Ecosystem</h3>
+    <h3>Browser support</h3>
     <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
+      <li> > As of early 2021, using the API to share title, text, and URL is supported by: Safari 12 or later on macOS and iOS. Chrome 75 or later on Android, and 89 or later on Chrome OS and Windows.</li>
+      <li> > Using the API to share files is supported by: Safari 15 or later on macOS and iOS. Chrome 75 or later on Android, and 89 or later on Chrome OS and Windows.</li>
+      <li> > Most Chromium-based browsers, like Edge, have the same support for this feature as the corresponding version of Chrome.</li>
+    </ul>
+    <h3>Check feature availability using wpt.live</h3>
+    <ul>
+      <li><a href="https://wpt.live/web-share/" target="_blank" rel="noopener">Wpt.Live</a></li>
+    </ul>
+    <h3>3rd Party Share buttons libraries</h3>
+    <ul>
+      <li><a href="https://www.addthis.com/get/share/" target="_blank" rel="noopener">AddThis Share Buttons</a></li>
+      <li><a href="https://sharingbuttons.io/" target="_blank" rel="noopener">Sharingbuttons.io Share Buttons</a></li>
+    </ul>
+    <h3>Web Share references</h3>
+    <ul>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Share_API" target="_blank" rel="noopener">MDN Web Share API</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/share" target="_blank" rel="noopener">MDN Navigator share</a></li>
+      <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/canShare" target="_blank" rel="noopener">MDN Navigator canShare</a></li>
+      <li><a href="https://www.w3.org/TR/web-share/" target="_blank" rel="noopener">w3c Web Share API</a></li>
+    </ul>
+    <h3>Some Other related references</h3>
+    <ul>
+      <li><a href="https://css-tricks.com/how-to-use-the-web-share-api/" target="_blank" rel="noopener">How to Use the Web Share API</a></li>
+      <li><a href="https://web.dev/web-share/" target="_blank" rel="noopener">Integrate with the OS sharing UI</a></li>
+      <li><a href="https://web.dev/web-share-target/" target="_blank" rel="noopener">Receiving shared data</a></li>
+      <li><a href="https://alligator.io/js/web-share-api/" target="_blank" rel="noopener">The Web Share API</a></li>
+      <li><a href="https://caniuse.com/web-share" target="_blank" rel="noopener">caniuse</a></li>
+      <li><a href="https://mobiforge.com/design-development/sharing-buttons-and-the-web-share-api" target="_blank" rel="noopener">Sharing buttons</a></li>
     </ul>
     <button class="btn btn-warning share-btn position-fixed" @click="sharePage"><i class="bi bi-share-fill"></i></button>
   </div>
@@ -71,6 +95,14 @@ export default {
       let liveToastNotAvailable = document.querySelector('#liveToastNotAvailable');
       let liveToastSuccess = document.querySelector('#liveToastSuccess');
       let liveToastAbort = document.querySelector('#liveToastAbort');
+      // const image = await fetch('img/logo.82b9c7a5.png')
+      // .then((response) => response.blob())
+      // .then((blob) => {
+      //   var file = new File([blob], "picture.png", {type: 'image/png'});
+      //   return([file]);
+      // })
+      // .catch(console.error);
+      // if (navigator.share && navigator.canShare({file: image})) {
       if (navigator.share) {
         navigator.share({
           title: 'WebShare API Demo',
