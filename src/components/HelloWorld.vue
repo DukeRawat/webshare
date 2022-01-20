@@ -1,5 +1,31 @@
 <template>
-  <div class="hello">
+  <div class="webshare-content">
+    <div aria-live="polite" aria-atomic="true" class="position-fixed top-0 end-0">
+      <div id="liveToastNotAvailable" class="toast align-items-center text-black bg-warning" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div  iv class="toast-body">
+            Web Share api not available!
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+      </div>
+      <div id="liveToastSuccess" class="toast align-items-center text-black bg-Success" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div  iv class="toast-body">
+            Web Share complete!
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+      </div>
+      <div id="liveToastAbort" class="toast align-items-center text-black bg-danger" role="alert" aria-live="assertive" aria-atomic="true">
+          <div class="d-flex">
+            <div  iv class="toast-body">
+            Web Share api Aborted!
+            </div>
+            <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+      </div>
+    </div>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
@@ -27,14 +53,43 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <button class="btn btn-warning share-btn position-fixed" @click="sharePage"><i class="bi bi-share-fill"></i></button>
   </div>
 </template>
 
 <script>
+import {Toast} from "bootstrap";
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  mounted() {
+  },
+  methods: {
+    sharePage() {
+      let liveToastNotAvailable = document.querySelector('#liveToastNotAvailable');
+      let liveToastSuccess = document.querySelector('#liveToastSuccess');
+      let liveToastAbort = document.querySelector('#liveToastAbort');
+      if (navigator.share) {
+        navigator.share({
+          title: 'WebShare API Demo',
+          text: 'Check out this WebShare Demo!',
+          url: 'https://dukerawat.github.io/webshare/'
+        }).then(() => {
+          new Toast(liveToastSuccess).show();
+          console.log('Thanks for sharing!');
+        })
+        .catch(() => {
+          new Toast(liveToastAbort).show();
+          console.error;
+        });
+      } else {
+        let toast = new Toast(liveToastNotAvailable);
+        toast.show();
+        console.log('Web Share api not available!');
+      }
+    }
   }
 }
 </script>
@@ -54,5 +109,10 @@ li {
 }
 a {
   color: #42b983;
+}
+.share-btn {
+  bottom: 3%;
+  right: 3%;
+  border-color: black;
 }
 </style>

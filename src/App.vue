@@ -1,7 +1,8 @@
 <template>
   <div id="app">
+    <div id="liveAlertPlaceholder"></div>
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Welcome to Web Share api demo Vue.js App"/>
   </div>
 </template>
 
