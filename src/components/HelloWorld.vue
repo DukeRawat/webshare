@@ -43,12 +43,12 @@
     <ul>
       <li> > It can only be used on a site that is accessed via HTTPS.</li>
       <li> > It must be invoked in response to a user action such as a click. Invoking it through the onload & setTimeout is not recommended.</li>
-      <li> > As of January 2021, it is available on Safari, Android in Chromium forks, Chrome OS, and Chrome on Windows. Chrome on MacOS is still in development.</li>
     </ul>
     <h3>Browser support</h3><br>
     <ul>
-      <li> > As of early 2021, using the API to share title, text, and URL is supported by: Safari 12 or later on macOS and iOS. Chrome 75 or later on Android, and 89 or later on Chrome OS and Windows.</li>
+      <li> >using the API to share title, text, and URL is supported by: Safari 12 or later on macOS and iOS, along with firefox on iOS . Chrome 75 or later on Android, and 89 or later on Chrome OS and Windows.</li>
       <li> > Using the API to share files is supported by: Safari 15 or later on macOS and iOS. Chrome 75 or later on Android, and 89 or later on Chrome OS and Windows.</li>
+      <li> > So it's available on Safari, Android in Chromium forks, Chrome OS, and Chrome on Windows. Chrome on MacOS is still in development.</li>
       <li> > Most Chromium-based browsers, like Edge, have the same support for this feature as the corresponding version of Chrome.</li>
     </ul>
     <h3>Check feature availability using wpt.live</h3><br>
